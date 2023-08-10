@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Login</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("./images/staffbg.png");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 300px;
+            margin: 250px auto;
+            padding: 20px;
+            /* border-top: 1000px; */
+            background-color: rgba(56, 47, 14, 0.767);
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: none;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* JavaScript Styling */
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        button[type="submit"]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+   
+    <form method="POST" action="/staff-login">
+        <h1 style="color:rgb(255, 255, 255);">Staff Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+    <script>
+        // JavaScript Logic (if needed)
+    </script>
+</body>
+</html>
+

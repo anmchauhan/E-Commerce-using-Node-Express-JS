@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- basic -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- site metas -->
+  <title>Milople E-Commerce</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- fevicon -->
+  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <!-- owl stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+    media="screen">
+
+  <style>
+    body {
+      background-color: #f3f3f3;
+    }
+
+    .header {
+      background-color: #ffffff;
+    }
+
+    .container {
+      max-width: 100%;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    .col-75 {
+      width: 100%;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    .checkout-table {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .checkout-table h3 {
+      text-align: center;
+    }
+
+    .checkout-table label {
+      font-weight: bold;
+    }
+
+    .checkout-table input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .checkout-table p {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .checkout-table .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .checkout-table .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- header inner -->
+    <div class="header">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+            <div class="full">
+              <div class="center-desk">
+                <div class="logo">
+                  <a href="./index"><img src="images/logo2.png" alt="#"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+            <div class="menu-area">
+              <div class="limit-box">
+                <nav class="main-menu">
+                  <ul class="menu-area-main">
+                    <li class="active"> <a href="/">Home</a> </li>
+                    <li> <a href="/about">About</a> </li>
+                    <li><a href="/brand">Brand</a></li>
+                    <li><a href="/special">Specials</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li class="last">
+                      <a href="#"><img src="images/search_icon.png" alt="icon" /></a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 offset-md-6">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end header inner -->
+  </header>
+
+  <div class="col-75">
+    <div class="container">
+    </br></br> <form id="checkout-form" method="post" action="/place_order">
+        <table class="checkout-table">
+          <tr>
+            <td colspan="2">
+              <h3>Billing Address</h3>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="checkout-name"><i class="fa fa-user"></i> Full Name</label></td>
+            <td><input type="text" id="checkout-name" name="name" placeholder="John M. Doe"></td>
+          </tr>
+          <tr>
+            <td><label for="checkout-email"><i class="fa fa-envelope"></i> Email</label></td>
+            <td><input type="text" id="checkout-email" name="email" placeholder="john@example.com"></td>
+          </tr>
+          <tr>
+            <td><label for="checkout-phone"><i class="fa fa-envelope"></i> Phone</label></td>
+            <td><input type="text" id="checkout-phone" name="phone" placeholder="88....88" pattern="[0-9]{10}"
+                required></td>
+          </tr>
+          <tr>
+            <td><label for="checkout-city"><i class="fa fa-institution"></i> City</label></td>
+            <td><input type="text" id="checkout-city" name="city" placeholder="New York"></td>
+          </tr>
+          <tr>
+            <td><label for="checkout-address"><i class="fa fa-address-card-o"></i> Address</label></td>
+            <td><input type="text" id="checkout-address" name="address" placeholder="542 W. 15th Street"></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <p>Total amount: $ <%= total %></p>
+              <input type="submit" class="btn" id="checkout-btn" value="Checkout">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  </body>
+  </html>

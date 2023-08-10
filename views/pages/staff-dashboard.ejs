@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Dashboard</title>
+    <style>
+        /* Color combinations and design for header */
+        header {
+            background: linear-gradient(to right, #4c8bf5, #674ea7);
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+
+        /* Rest of the styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Milople Staff Dashboard</h1>
+    </header>
+
+    <button class="button" onclick="showOrders()">Orders</button>
+    <button class="button" onclick="showProducts()">Products</button>
+    <button class="button" onclick="showUsers()">Users</button>
+    <a href="/staff-login"><button class="button" style="background-color: #c52424;">LogOut</button></a>
+
+    <h2>Orders</h2>
+    <table id="ordersTable" style="display:none">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Cost</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Product IDs</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orders.forEach(function(order) { %>
+                <tr>
+                    <td><%= order.Id %></td>
+                    <td><%= order.cost %></td>
+                    <td><%= order.name %></td>
+                    <td><%= order.email %></td>
+                    <td><%= order.status %></td>
+                    <td><%= order.city %></td>
+                    <td><%= order.address %></td>
+                    <td><%= order.phone %></td>
+                    <td><%= order.date %></td>
+                    <td><%= order.products_ids %></td>
+                </tr>
+                
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h2>Products</h2>
+    <table id="productsTable" style="display:none">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Sale Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(function(product) { %>
+                <tr>
+                    <td><%= product.id %></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.description %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.sale_price %></td>
+                    <td><%= product.quantity %></td>
+                    <td><%= product.category %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h2>Users</h2>
+<table id="usersTable" style="display:none">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(function(user) { %>
+            <tr id="userRow-<%= user.id %>">
+                <td><%= user.id %></td>
+                <td><%= user.username %></td>
+                <td><%= user.password %></td>
+                <td><button class="button" onclick="deleteUser('<%= user.id %>')">Delete</button></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<!-- Add User Form -->
+<div id="addUserForm" style="display: none;">
+    <h3>Add New User</h3>
+    <input type="text" id="usernameInput" placeholder="Username" />
+    <input type="password" id="passwordInput" placeholder="Password" />
+    <button class="button" onclick="addUser()">Add User</button>
+</div>
+
+<button class="button" onclick="showAddUserForm()">Add User</button>
+
+
+    <footer>
+        Milople E-commerce
+    </footer>
+
+    <script>
+        // JavaScript functions for showing the relevant tables
+        function showOrders() {
+            var ordersTable = document.getElementById("ordersTable");
+            var productsTable = document.getElementById("productsTable");
+            var usersTable = document.getElementById("usersTable");
+
+            ordersTable.style.display = "table";
+            productsTable.style.display = "none";
+            usersTable.style.display = "none";
+        }
+
+        function showProducts() {
+            var ordersTable = document.getElementById("ordersTable");
+            var productsTable = document.getElementById("productsTable");
+            var usersTable = document.getElementById("usersTable");
+
+            ordersTable.style.display = "none";
+            productsTable.style.display = "table";
+            usersTable.style.display = "none";
+        }
+
+        function showUsers() {
+            var ordersTable = document.getElementById("ordersTable");
+            var productsTable = document.getElementById("productsTable");
+            var usersTable = document.getElementById("usersTable");
+
+            ordersTable.style.display = "none";
+            productsTable.style.display = "none";
+            usersTable.style.display = "table";
+        }
+    </script>
+    <script>
+        function showAddUserForm() {
+    var addUserForm = document.getElementById("addUserForm");
+    var usersTable = document.getElementById("usersTable");
+
+    addUserForm.style.display = "block";
+    usersTable.style.display = "none";
+}
+
+function addUser() {
+    var usernameInput = document.getElementById("usernameInput") ;
+    var passwordInput = document.getElementById("passwordInput");
+    console.log("It's working")
+
+    // Perform validation on the input fields (e.g., check for empty values)
+
+    // You can then send an AJAX request to the server to add the new user
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/add_user', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // User added successfully, handle the response if needed
+                console.log('User added successfully');
+                
+                // Reset the form and hide it
+                usernameInput.value = "";
+                passwordInput.value = "";
+                var addUserForm = document.getElementById("addUserForm");
+                addUserForm.style.display = "none";
+                
+                // Refresh the users table or perform any other necessary action
+            } else {
+                // Adding user failed, handle the error
+                console.error('Error adding user: ', xhr.responseText);
+                // Show an error message or perform any other necessary action
+            }
+        }
+    };
+    // Send the username and password as parameters in the request body
+    var params = 'username=' + encodeURIComponent(usernameInput.value) + '&password=' + encodeURIComponent(passwordInput.value);
+    xhr.send(params);
+}
+
+        </script>
+    <script>
+       function deleteUser(userId) {
+    // Send an AJAX request to the server to delete the user
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/delete_user', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Deletion successful, remove the table row
+                var row = document.getElementById("userRow-" + userId);
+                row.parentNode.removeChild(row);
+            } else {
+                // Deletion failed, handle the error
+                console.error('Error deleting user: ', xhr.responseText);
+                // Show an error message or perform any other necessary action
+            }
+        }
+    };
+    // Send the user ID as a parameter in the request body
+    var params = 'userId=' + encodeURIComponent(userId);
+    xhr.send(params);
+}
+
+    </script>
+
+     <script>
+       function deleteUser(userId) {
+    // Send an AJAX request to the server to delete the user
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/delete_user', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Deletion successful, remove the table row
+                var row = document.getElementById("userRow-" + userId);
+                row.parentNode.removeChild(row);
+            } else {
+                // Deletion failed, handle the error
+                console.error('Error deleting user: ', xhr.responseText);
+                // Show an error message or perform any other necessary action
+            }
+        }
+    };
+    // Send the user ID as a parameter in the request body
+    var params = 'userId=' + encodeURIComponent(userId);
+    xhr.send(params);
+}
+
+    </script>
+
+    
+</body>
+</html>
